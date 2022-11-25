@@ -1,0 +1,133 @@
+specVersion: 0.0.4
+description: >-
+  A secure & decentralized way to address resources on and off the blockchain
+  using simple, human-readable names. Access domains and transfer history.
+repository: "https://github.com/pulsedomains/pns-subgraph"
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: ENSRegistry
+    network: arbitrum-goerli
+    source:
+      address: "0x3829C64D613D5368796084249de2f3fdACF11a61"
+      abi: EnsRegistry
+      startBlock: 1377250
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./src/ensRegistry.ts
+      entities:
+        - Domain
+        - Account
+        - Resolver
+      abis:
+        - name: EnsRegistry
+          file: ./abis/Registry.json
+      eventHandlers:
+        - event: "Transfer(indexed bytes32,address)"
+          handler: handleTransfer
+        - event: "NewOwner(indexed bytes32,indexed bytes32,address)"
+          handler: handleNewOwner
+        - event: "NewResolver(indexed bytes32,address)"
+          handler: handleNewResolver
+        - event: "NewTTL(indexed bytes32,uint64)"
+          handler: handleNewTTL
+  - kind: ethereum/contract
+    name: Resolver
+    network: arbitrum-goerli
+    source:
+      address: "0x966B962c22e26dE6266d4e8bd66FAd4991798CAa"
+      abi: Resolver
+      startBlock: 1377438
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./src/resolver.ts
+      entities:
+        - AddrChanged
+        - MulticoinAddrChanged
+        - NameChanged
+        - AbiChanged
+        - PubkeyChanged
+        - Textchanged
+        - ContenthashChanged
+        - InterfaceChanged
+        - AuthorisationChanged
+      abis:
+        - name: Resolver
+          file: ./abis/PublicResolver.json
+      eventHandlers:
+        - event: "ABIChanged(indexed bytes32,indexed uint256)"
+          handler: handleABIChanged
+        - event: "AddrChanged(indexed bytes32,address)"
+          handler: handleAddrChanged
+        - event: "AddressChanged(indexed bytes32,uint256,bytes)"
+          handler: handleMulticoinAddrChanged
+        - event: >-
+            AuthorisationChanged(indexed bytes32,indexed address,indexed
+            address,bool)
+          handler: handleAuthorisationChanged
+        - event: "ContenthashChanged(indexed bytes32,bytes)"
+          handler: handleContentHashChanged
+        - event: "InterfaceChanged(indexed bytes32,indexed bytes4,address)"
+          handler: handleInterfaceChanged
+        - event: "NameChanged(indexed bytes32,string)"
+          handler: handleNameChanged
+        - event: "PubkeyChanged(indexed bytes32,bytes32,bytes32)"
+          handler: handlePubkeyChanged
+        - event: "TextChanged(indexed bytes32,indexed string,string)"
+          handler: handleTextChanged
+  - kind: ethereum/contract
+    name: BaseRegistrar
+    network: arbitrum-goerli
+    source:
+      address: "0xB7ef4C14E25855c433B4f1bDCf047fB6291f6997"
+      abi: BaseRegistrar
+      startBlock: 1377255
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./src/ethRegistrar.ts
+      entities:
+        - Registration
+        - NameRegistered
+        - NameRenewed
+        - NameTransferred
+      abis:
+        - name: BaseRegistrar
+          file: ./abis/BaseRegistrar.json
+      eventHandlers:
+        - event: "NameRegistered(indexed uint256,indexed address,uint256)"
+          handler: handleNameRegistered
+        - event: "NameRenewed(indexed uint256,uint256)"
+          handler: handleNameRenewed
+        - event: "Transfer(indexed address,indexed address,indexed uint256)"
+          handler: handleNameTransferred
+  - kind: ethereum/contract
+    name: EthRegistrarController
+    network: arbitrum-goerli
+    source:
+      address: "0xc33D453FeC6d92838a88C47B9c80acDe8Dd6B3f9"
+      abi: EthRegistrarController
+      startBlock: 1377273
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./src/ethRegistrar.ts
+      entities:
+        - Registration
+      abis:
+        - name: EthRegistrarController
+          file: ./abis/EthRegistrarController.json
+      eventHandlers:
+        - event: >-
+            NameRegistered(string,indexed bytes32,indexed
+            address,uint256,uint256)
+          handler: handleNameRegisteredByController
+        - event: "NameRenewed(string,indexed bytes32,uint256,uint256)"
+          handler: handleNameRenewedByController
