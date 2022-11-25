@@ -2,7 +2,7 @@ specVersion: 0.0.4
 description: >-
   A secure & decentralized way to address resources on and off the blockchain
   using simple, human-readable names. Access domains and transfer history.
-repository: "https://github.com/pulsedomains/pns-subgraph"
+repository: "https://github.com/arbitrum-domains/ans-subgraph"
 schema:
   file: ./schema.graphql
 dataSources:
@@ -10,9 +10,9 @@ dataSources:
     name: ENSRegistry
     network: arbitrum-goerli
     source:
-      address: "0x3829C64D613D5368796084249de2f3fdACF11a61"
+      address: "0x47F8C9B8d6093FE3Bc8d30E22f1603528B1833e2"
       abi: EnsRegistry
-      startBlock: 1377250
+      startBlock: 1761593
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -38,9 +38,9 @@ dataSources:
     name: Resolver
     network: arbitrum-goerli
     source:
-      address: "0x966B962c22e26dE6266d4e8bd66FAd4991798CAa"
+      address: "0x7c15b8894ACd9627Fe94028201EF5eD90f75eD60"
       abi: Resolver
-      startBlock: 1377438
+      startBlock: 1761661
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -84,9 +84,9 @@ dataSources:
     name: BaseRegistrar
     network: arbitrum-goerli
     source:
-      address: "0xB7ef4C14E25855c433B4f1bDCf047fB6291f6997"
+      address: "0x6707BcE9BF05A8530da145D6dc0970281FA1c4e9"
       abi: BaseRegistrar
-      startBlock: 1377255
+      startBlock: 1761599
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -111,9 +111,9 @@ dataSources:
     name: EthRegistrarController
     network: arbitrum-goerli
     source:
-      address: "0xc33D453FeC6d92838a88C47B9c80acDe8Dd6B3f9"
+      address: "0x379CD5b8873d9ca969adAEEb779f52F4f3480Be5"
       abi: EthRegistrarController
-      startBlock: 1377273
+      startBlock: 1822312
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
