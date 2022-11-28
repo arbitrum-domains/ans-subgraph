@@ -10,9 +10,9 @@ dataSources:
     name: ENSRegistry
     network: arbitrum-goerli
     source:
-      address: "0x47F8C9B8d6093FE3Bc8d30E22f1603528B1833e2"
+      address: "0x9119903Fd6eF23Dcc65eE2A10aad94bF9d93bCdc"
       abi: EnsRegistry
-      startBlock: 1761593
+      startBlock: 1909415
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -38,9 +38,9 @@ dataSources:
     name: Resolver
     network: arbitrum-goerli
     source:
-      address: "0x7c15b8894ACd9627Fe94028201EF5eD90f75eD60"
+      address: "0x1A1a70C4E4B10e3bEbA2CD5953f9160104851b2d"
       abi: Resolver
-      startBlock: 1761661
+      startBlock: 1909772
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -84,9 +84,9 @@ dataSources:
     name: BaseRegistrar
     network: arbitrum-goerli
     source:
-      address: "0x6707BcE9BF05A8530da145D6dc0970281FA1c4e9"
+      address: "0xF4902Ce3880d30e2Ef115390Fc4913CdA1BB4A47"
       abi: BaseRegistrar
-      startBlock: 1761599
+      startBlock: 1909743
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -111,9 +111,9 @@ dataSources:
     name: EthRegistrarController
     network: arbitrum-goerli
     source:
-      address: "0x379CD5b8873d9ca969adAEEb779f52F4f3480Be5"
+      address: "0x61a57E0Ab58b95c973B373ABB89d07A7a0F2403a"
       abi: EthRegistrarController
-      startBlock: 1822312
+      startBlock: 1909757
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5

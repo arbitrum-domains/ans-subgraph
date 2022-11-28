@@ -1,11 +1,11 @@
 {
   "name": "arb-goerli",
-  "version": "1.0.3",
-  "repository": "https://github.com/pnsdomains/ens-subgraph",
+  "version": "1.0.6",
+  "repository": "https://github.com/arbitrum-domains/ans-subgraph",
   "license": "MIT",
   "scripts": {
     "codegen": "graph codegen --output-dir src/types/",
-    "auth": "graph auth --product hosted-service ",
+    "auth": "graph auth --product hosted-service",
     "build": "graph build",
     "deploy": "graph deploy --product hosted-service ansdomain/arb-goerli --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
     "watch-local": "graph deploy graphprotocol/ens --watch --debug --node http://127.0.0.1:8020/ --ipfs http://localhost:5001"
